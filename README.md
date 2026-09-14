@@ -26,27 +26,28 @@ O projeto passou pela avaliação do Google Lighthouse, apresentando os seguinte
 ### ENGENHARIA DE SOFTWARE
 #### Diferenciais Técnicos e Arquitetura
 
-> [Preencher: uma frase sobre o foco do desenvolvimento deste projeto — ex. performance na filtragem, organização dos dados, etc.]
+> O desenvolvimento do extrato focou em manter o fluxo de dados previsível, com o mínimo de estado espalhado entre componentes e componentes de apresentação totalmente desacoplados da lógica de negócio.
 
-* **[Nome do diferencial 1]**
-  [Descrição de como funciona tecnicamente — ex. como o filtro é aplicado à lista de transações, se usa Signals, RxJS, pipes customizados, etc.]
+- **Filtragem Derivada por Computed Signals** O componente principal guarda os dados brutos e os critérios de busca em Signals independentes (`transacoesOriginal`, `termoBusca`, `tipoFiltro`). A lista final exibida na tela é resultado de um `computed()` que recalcula automaticamente sempre que qualquer um desses sinais muda — sem sincronização manual ou lógica duplicada.
 
-* **[Nome do diferencial 2]**
-  [Descrição.]
+- **Comunicação por Eventos Tipados** O componente de filtros não conhece a lista de transações nem mantém estado próprio: ele apenas emite os valores digitados/selecionados através da API moderna `output()` do Angular. Isso mantém a UI de filtro totalmente desacoplada da lógica de filtragem em si.
 
-* **[Nome do diferencial 3]**
-  [Descrição.]
+- **Otimização de Renderização com OnPush** Todos os componentes de apresentação (Filtros, Lista de Transações, Resumo de Saldo) usam `ChangeDetectionStrategy.OnPush`, reduzindo ciclos desnecessários de verificação do Angular.
+
+- **Tratamento Defensivo na Origem dos Dados** O carregamento das transações passa por um `subscribe` com tratamento de erro explícito: se a requisição falhar, o Signal é redefinido para uma lista vazia, evitando que a tela quebre ou fique presa num estado inconsistente.
+
+- **Renderização de Ícones via SVG Inline** Os ícones de cada categoria (PIX, Cartão, Boleto, Transferência) são SVGs inline mapeados por tipo e injetados via `DomSanitizer`, evitando requisições extras de imagem para cada ícone.
 
 ---
 
 ### ESTRUTURA FUNCIONAL
 #### Componentização e Responsabilidades
 
-A aplicação divide suas tarefas em blocos menores e organizados:
-
-* **[Nome do Component 1]**: [O que ele faz.]
-* **[Nome do Component 2]**: [O que ele faz.]
-* **[Nome do Component 3]**: [O que ele faz.]
+- **Extrato Component (Página Mãe)**: Centraliza o estado da aplicação em Signals, dispara a busca inicial de dados e deriva a lista filtrada através de um `computed()`.
+- **Filtros Component**: Captura o texto digitado e o tipo de transação selecionado, emitindo os valores via eventos tipados, sem manter estado próprio.
+- **Lista Transações Component**: Recebe a lista já filtrada via `input()` e renderiza cada transação, incluindo o ícone correspondente à categoria.
+- **Resumo Saldo Component**: Exibe saldo total, entradas e saídas recebidos via `input()`, formatados com `CurrencyPipe`.
+- **Extrato Service**: Camada de acesso a dados isolada, responsável por buscar as transações e devolvê-las como `Observable`.
 
 ---
 
