@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "data": "2024-05-10",
+    "descricao": "PIX Recebido - João Silva",
+    "valor": 150.00,
+    "categoria": "PIX",
+    "tipo": "ENTRADA"
+    
+  },
+  {
+    "id": "2",
+    "data": "2024-05-11",
+    "descricao": "Supermercado BH",
+    "valor": 342.50,
+    "categoria": "CARTAO",
+    "tipo": "SAIDA"
+    
+  },
+  {
+    "id": "3",
+    "data": "2024-05-12",
+    "descricao": "Pagamento Conta de Luz",
+    "valor": 120.00,
+    "categoria": "BOLETO",
+    "tipo": "SAIDA"
+    
+  },
+  {
+    "id": "4",
+    "data": "2024-05-13",
+    "descricao": "Salário Mensal - Tech Corp",
+    "valor": 4500.00,
+    "categoria": "TRANSFERENCIA",
+    "tipo": "ENTRADA"
+    
+  },
+  {
+    "id": "5",
+    "data": "2024-05-14",
+    "descricao": "Assinatura Netflix",
+    "valor": 55.90,
+    "categoria": "CARTAO",
+    "tipo": "SAIDA"
+    
+  },
+  {
+    "id": "6",
+    "data": "2024-05-15",
+    "descricao": "PIX Enviado - Maria Souza",
+    "valor": 200.00,
+    "categoria": "PIX",
+    "tipo": "SAIDA"
+    
+  },
+  {
+    "id": "7",
+    "data": "2024-05-16",
+    "descricao": "Rendimento Investimentos",
+    "valor": 45.20,
+    "categoria": "TRANSFERENCIA",
+    "tipo": "ENTRADA"
+    
+  }
+]

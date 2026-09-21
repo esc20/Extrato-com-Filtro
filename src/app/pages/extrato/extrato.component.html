@@ -1,0 +1,13 @@
+<div class="extrato-layout">
+  <header>
+    <h1>Atividade Recente</h1>
+  </header>
+
+  <app-filtros 
+    (aoMudarBusca)="termoBusca.set($event)"
+    (aoMudarTipo)="tipoFiltro.set($event)">
+  </app-filtros>
+
+  
+  <app-lista-transacoes [transacoes]="transacoesFiltradas()"></app-lista-transacoes>
+</div>
