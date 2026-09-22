@@ -4,20 +4,23 @@
   width: 100%;
   max-width: 720px;
   margin: 40px auto;
-  padding: 0 20px;
+  padding: 0 16px;
   animation: pageEnter 0.6s ease-out;
+  box-sizing: border-box;
 
-  
   @media (max-width: 480px) {
     margin: 16px auto; 
-    padding: 0 8px;   
+    padding: 0 12px;   
+    overflow-x: hidden;
   }
 
   header {
     margin-bottom: 32px;
+    width: 100%;
+
     @media (max-width: 480px) {
       margin-bottom: 20px;
-      padding: 0 4px;
+      padding: 0;
     }
 
     h1 {
@@ -48,7 +51,10 @@
   app-filtros,
   app-lista-transacoes {
     display: block;
+    width: 100%;
+    max-width: 100%;
     margin-bottom: 24px;
+    box-sizing: border-box;
 
     @media (max-width: 480px) {
       margin-bottom: 16px;
